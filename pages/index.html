@@ -1,15 +1,177 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QuakeVOX</title>
-    <script src="https://unpkg.com/wavesurfer.js"></script>
-    <script src="./src/js/main.js"></script>
+
+    <!--Load Leaflet-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet.vectorgrid@latest/dist/Leaflet.VectorGrid.bundled.js"></script>
+
+    <!--Load WaveSurfer-->
+    <script src="https://unpkg.com/wavesurfer.js@7"></script>
+
+    <!--Load Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@500&family=Kaisei+HarunoUmi:wght@700&family=Yomogi&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./src/css/style.css" />
 </head>
+
 <body>
-    <div id="map"></div>
-    <audio controls src="./src/vox/041023_niigata/EA235321.wav"></audio>
-    <main></main>
+    <div id="panel">
+        <div id="map"></div>
+        <main>
+            <div class="q-box">
+                <div class="vox-outer">
+                    <div class="vox" id="tohokuchiho-taiheiyouoki"></div>
+
+                    <div class="vox-curtain" id="tohokuchiho-taiheiyouoki-curtain">
+                        <button class="play" onclick="play('tohokuchiho_taiheiyouoki')">▶</button>
+                    </div>
+                </div>
+
+                <div class="q-info">
+                    <div class="q-title">
+                        <h1 class="q-name">東北地方太平洋沖地震</h1>
+                        <h2 class="q-disaster-name">東日本大震災</h2>
+                    </div>
+                    <div class="split-line"></div>
+                    <div class="q-details">
+                        <p class="q-date">発生日時: 2011-03-11</p>
+                        <p class="q-intensity">最大震度: 震度7</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="q-box">
+                <div class="vox-outer">
+                    <div class="vox" id="kumamoto"></div>
+
+                    <div class="vox-curtain" id="kumamoto-curtain">
+                        <button class="play" onclick="play('kumamoto')">▶</button>
+                    </div>
+                </div>
+
+                <div class="q-details">
+                    <h1 class="q-name">熊本地震</h1>
+                    <h2 class="q-disaster-name">東日本大震災</h2>
+                    <p class="q-intensity">最大震度: 震度7</p>
+                </div>
+            </div>
+
+
+            <div class="q-box">
+                <div class="vox-outer">
+                    <div class="vox" id="hyogo-nanbu"></div>
+
+                    <div class="vox-curtain">
+                        <button class="play" onclick="tohokuchiho_taiheiyouoki.playPause()">▶</button>
+                    </div>
+                </div>
+
+                <div class="q-details">
+                    <h1 class="q-name">東北地方太平洋沖地震</h1>
+                    <h2 class="q-disaster-name">東日本大震災</h2>
+                    <p class="q-intensity">最大震度: 震度7</p>
+                </div>
+            </div>
+
+
+            <div class="q-box">
+                <div class="vox-outer">
+                    <div class="vox" id="niigata"></div>
+
+                    <div class="vox-curtain">
+                        <button class="play" onclick="tohokuchiho_taiheiyouoki.playPause()">▶</button>
+                    </div>
+                </div>
+
+                <div class="q-details">
+                    <h1 class="q-name">東北地方太平洋沖地震</h1>
+                    <h2 class="q-disaster-name">東日本大震災</h2>
+                    <p class="q-intensity">最大震度: 震度7</p>
+                </div>
+            </div>
+
+
+            <div class="q-box">
+                <div class="vox-outer">
+                    <div class="vox" id="tokachioki"></div>
+
+                    <div class="vox-curtain">
+                        <button class="play" onclick="tohokuchiho_taiheiyouoki.playPause()">▶</button>
+                    </div>
+                </div>
+
+                <div class="q-details">
+                    <h1 class="q-name">東北地方太平洋沖地震</h1>
+                    <h2 class="q-disaster-name">東日本大震災</h2>
+                    <p class="q-intensity">最大震度: 震度7</p>
+                </div>
+            </div>
+
+
+            <div class="q-box">
+                <div class="vox-outer">
+                    <div class="vox" id="fukuoka-hokuseioki"></div>
+
+                    <div class="vox-curtain">
+                        <button class="play" onclick="tohokuchiho_taiheiyouoki.playPause()">▶</button>
+                    </div>
+                </div>
+
+                <div class="q-details">
+                    <h1 class="q-name">東北地方太平洋沖地震</h1>
+                    <h2 class="q-disaster-name">東日本大震災</h2>
+                    <p class="q-intensity">最大震度: 震度7</p>
+                </div>
+            </div>
+
+
+            <div class="q-box">
+                <div class="vox-outer">
+                    <div class="vox" id="iwate-miyagi"></div>
+
+                    <div class="vox-curtain">
+                        <button class="play" onclick="tohokuchiho_taiheiyouoki.playPause()">▶</button>
+                    </div>
+                </div>
+
+                <div class="q-details">
+                    <h1 class="q-name">東北地方太平洋沖地震</h1>
+                    <h2 class="q-disaster-name">東日本大震災</h2>
+                    <p class="q-intensity">最大震度: 震度7</p>
+                </div>
+            </div>
+
+
+            <div class="q-box">
+                <div class="vox-outer">
+                    <div class="vox" id="fukushima-oki"></div>
+
+                    <div class="vox-curtain">
+                        <button class="play" onclick="tohokuchiho_taiheiyouoki.playPause()">▶</button>
+                    </div>
+                </div>
+
+                <div class="q-details">
+                    <h1 class="q-name">東北地方太平洋沖地震</h1>
+                    <h2 class="q-disaster-name">東日本大震災</h2>
+                    <p class="q-intensity">最大震度: 震度7</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="./src/js/main.js"></script>
 </body>
+
 </html>
