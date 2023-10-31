@@ -1,0 +1,144 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Kaisei Decol', serif; /* design */
+  font-family: 'Kaisei HarunoUmi', serif; /* design */
+  font-family: 'Yomogi', cursive; /* design */
+}
+
+#panel {
+  display: grid;
+  grid-template-rows: 100dvh;
+  grid-template-columns: calc(100dvh * ((2.236068 - 1) / 2)) 1fr;
+}
+
+main {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.q-box {
+  width: calc(100% - (8px * 2));
+
+  margin: 8px;
+
+  border-radius: 16px;
+
+  background-color: pink; /* design */
+
+  overflow: hidden;
+}
+
+.vox-outer{
+  height: 128px;
+
+  position: relative;
+
+  background-color: lightblue; /* design */
+}
+
+.vox {
+  height: 50%;
+  width: 100%;
+}
+
+.vox-curtain {
+  height: 100%;
+  width: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 99;
+
+  background-image: url(./img/dot_mesh.svg); /* design */
+  background-repeat: repeat;
+  background-size: 12px; /* design */
+
+  animation: linear 1s move infinite;
+}
+@keyframes move {
+  from {
+      background-position: 0 0; 
+  }
+  
+  to {
+      background-position: 20px calc(20px * (34/20)); /* design */
+  }
+}
+
+.play {
+  height: 80%;
+  aspect-ratio: 1;
+}
+
+.q-info {
+  height: calc(128px * (1 / 1.41421356));
+
+  overflow: hidden;
+}
+
+.q-title {
+  height: 100%;
+
+  margin: 8px;
+
+  float: left;
+}
+
+.q-name {
+  margin: 0;
+
+  font-size: 32px;
+}
+
+.q-disaster-name {
+  margin: 0;
+}
+
+.split-line {
+  height: calc(100% - 8px);
+  width: 4px;
+
+  margin: 4px 16px;
+
+  border-radius: 2px;
+
+  float: left;
+
+  background-color: aquamarine; /* design */
+}
+
+.q-details {
+  height: calc(100% - (8px * 2));
+
+  margin: 8px;
+
+  float: left;
+
+  display: flex;
+  flex-flow: column;
+  justify-content:flex-end;
+}
+
+.q-date {
+  margin: 0;
+}
+
+.q-intensity {
+  margin: 0;
+}
+
+#map {
+  height: 100dvh;
+  width: calc(100dvh * ((2.236068 - 1) / 2));
+  margin: 0;
+
+  background: black; /* design */
+}
