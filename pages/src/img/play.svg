@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<svg
+   width="100"
+   height="100"
+   viewBox="0 0 55 64"
+   version="1.1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+   <g>
+      <path
+         fill="snow"
+         d="M 0 10 Q 0 0 9 5 L 47 27 Q 55 32 47 37 L 9 59 Q 0 64 0 54 Z"/>
+   </g>
+</svg>

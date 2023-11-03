@@ -1,12 +1,25 @@
+const qs = [
+    { id: 'tohokuchiho_taiheiyouoki', name: '東北地方太平洋沖地震', disasterName: '東日本大震災', date: '2011-03-11', intensity: 7, coordinates: [38.1006, 142.8517]},
+    { id: 'kumamoto', name: '熊本地震', disasterName: null, date: '2016-04-14', intensity: '7', coordinates: [32.7806, 130.8500]},
+    { id: 'hyogo_nanbu', name: '兵庫県南部地震', disasterName: '阪神淡路大震災', date: '1995-1-17', intensity: '7', coordinates: [34.6083, 135.0361]},
+    { id: 'niigata', name: '新潟県中越地震', disasterName: '新潟県中越大震災', date: '2004-10-23', intensity: '7', coordinates: [37.2847,138.8667]},
+    { id: 'fukushima_oki', name: '福島県沖地震', disasterName: null, date: '2022-03-16', intensity: '6強', coordinates: [37.6856,141.6175]},
+    { id: 'iwate_miyagi', name: '岩手・宮城内陸地震', disasterName: null, date: '2008-06-14', intensity: '6強', coordinates: [39.0186,140.8689]},
+    { id: 'tokachioki', name: '十勝沖地震', disasterName: null, date: '2003-9-26', intensity: '6弱', coordinates: [41.7686,144.0686]},
+    { id: 'fukuoka_hokuseioki', name: '福岡県北西沖地震', disasterName: null, date: '2005-03-20', intensity: '6弱', coordinates: [33.7342,130.1681]},
+];
+
+let epicenterMarker = null;
+
 function setQuakeOnMap([N, E], zoomLevel) {
-    map.setZoom(zoomLevel || 0);
+    if (epicenterMarker !== null) {
+        map.removeLayer(epicenterMarker);
+    }
+
     map.setView([N || 37.5, E || 135]);
 
-    L.marker([40, 135], {icon: epicenter}).addTo(map);
+    epicenterMarker = L.marker([N, E], {icon: red_x}).addTo(map);
 };
-
-function addEpicenter([N, E], name) {
-}
 
 function play(name) {
     name.playPause();
@@ -28,7 +41,7 @@ L.vectorGrid.protobuf(
         vectorTileLayerStyles: {
             coastline: {
                 color: "snow",
-                weight: 1,
+                weight: 2,
             },
             waterarea: [], road: [], railway: [], river: [], lake: [], boundary: [], building: [], contour: [], elevation: [], label: [], landforma: [], landforml: [], landformp: [], searoute: [], structurea: [], structurel: [], symbol: [], transp: [], transl: [], wstructurea: [],
         },
@@ -38,12 +51,10 @@ L.vectorGrid.protobuf(
 let red_x = L.icon({
     iconUrl: './src/img/red_x.svg',
 
-    iconSize:     [30, 30], // size of the icon
+    iconSize:     [24, 24], // size of the icon
     iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
-
-epicenter = L.marker([30, 135], {icon: red_x}).addTo(map);
 
 
 //wave
@@ -66,37 +77,29 @@ const wavesurfer_setting = {
         progressColor: 'rgb(100, 0, 100)',
         cursorColor: 'brown', }
 
-const tokachioki = WaveSurfer.create({ ...wavesurfer_setting, ...{
-    container: '#tokachioki', url: './src/vox/030926_tokachioki/D926D621.wav',
-}});
+let waveList = [];
 
-const niigata = WaveSurfer.create({ ...wavesurfer_setting, ...{
-    container: '#niigata', url: './src/vox/041023_niigata/EA235321.wav',
-}});
+qs.forEach((q, i) => {
+    document.querySelector(`#${q.id}-box`).addEventListener('mouseover', () => {
+        console.log('over')
+        setQuakeOnMap(q.coordinates);
+    });
 
-const fukuoka_hokuseioki = WaveSurfer.create({ ...wavesurfer_setting, ...{
-    container: '#fukuoka-hokuseioki', url: './src/vox/050320_fukuoka-hokuseioki/F320EDF1.wav',
-}});
+    waveList[i] = WaveSurfer.create({ ...wavesurfer_setting, ...{
+        container: `#${q.id}`, url: `./src/vox/${q.id}.wav`,
+    }});
 
-const iwate_miyagi = WaveSurfer.create({ ...wavesurfer_setting, ...{
-    container: '#iwate-miyagi', url: './src/vox/080614_iwate-miyagi/I6148A61.wav',
-}});
+    const qVoxCurtain = document.querySelector(`#${q.id}-curtain`);
+    const qVoxCurtainCSSDisplay = window.getComputedStyle(qVoxCurtain).getPropertyValue('display');
 
-const tohokuchiho_taiheiyouoki = WaveSurfer.create({ ...wavesurfer_setting, ...{
-    container: '#tohokuchiho-taiheiyouoki', url: './src/vox/110311_tohokuchiho-taiheiyouoki/L3118A41.wav',
-}});
+    document.querySelector(`#${q.id}-curtain`).addEventListener('click', () => {
+        waveList[i].playPause();
+        qVoxCurtain.style.display = 'none';
+    });
 
+    waveList[i].on('finish', () => {
+        waveList[i].seekTo(0);
+        qVoxCurtain.style.display = qVoxCurtainCSSDisplay;
+    });
 
-const kumamoto = WaveSurfer.create({ ...wavesurfer_setting, ...{
-    container: '#kumamoto', url: './src/vox/160414_kumamoto/Q414EEBD.wav',
-}});
-
-const fukushima_oki = WaveSurfer.create({ ...wavesurfer_setting, ...{
-    container: '#fukushima-oki', url: './src/vox/220316_fukushima-oki/acc20220316000142212.wav',
-}});
-
-const hyogo_nanbu = WaveSurfer.create({ ...wavesurfer_setting, ...{
-    container: '#hyogo-nanbu', url: './src/vox/950117_hyogo-nanbu/H1171931.wav',
-}});
-
-const wave_list = [tohokuchiho_taiheiyouoki, tokachioki, niigata, iwate_miyagi, kumamoto, fukushima_oki, hyogo_nanbu];
+});

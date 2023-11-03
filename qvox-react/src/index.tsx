@@ -6,19 +6,21 @@ import qs from './const/qs';
 const QBoxs = () => {
 
   const qsEle = qs.map((Q) =>
-    <div className="q-box">
+    <div className="q-box" id={Q.id + "-box"}>
     <div className="q-vox-outer">
       <div className="q-vox" id={Q.id}></div>
 
       <div className="q-vox-curtain" id={Q.id + "-curtain"}>
-        <button className="play">▶</button>
+        <img className="q-vox-play" id={Q.id + "-play"} src="./src/img/play.svg" alt="▶"></img>
+        <img className="q-vox-play-outline-1" id={Q.id + "-play-outline-1"} src="./src/img/play_outline.svg"></img>
+        <img className="q-vox-play-outline-2" id={Q.id + "-play-outline-2"} src="./src/img/play_outline.svg"></img>
       </div>
     </div>
 
     <div className="q-info">
       <div className="q-title">
-        <h1 className="q-name">{Q.name}</h1>
-        <h2 className="q-disaster-name">{Q.disasterName}</h2>
+        <h2 className="q-name">{Q.name}</h2>
+        <h3 className="q-disaster-name">{Q.disasterName}</h3>
       </div>
       <div className="split-line"></div>
         <div className="q-details">

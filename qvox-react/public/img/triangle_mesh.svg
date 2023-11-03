@@ -9,11 +9,12 @@
    xmlns:svg="http://www.w3.org/2000/svg">
    <g>
       <rect
-         fill="lightblue"
+         fill="gray"
+         fill-opacity="0.2"
          width="20" height="34" x="0" y="0"/>
       <path
-         fill="aquamarine"
-         fill-opacity="0.5"
-         d="M 0 0 L 20 34 L 20 17 L 0 17 L 0 34 L 20 0 Z" />
+         fill="gray"
+         fill-opacity="0.1"
+         d="M 0 0 L 20 34 L 20 17 L 0 17 L 0 34 L 20 0 Z"/>
    </g>
 </svg>
