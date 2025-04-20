@@ -1,271 +1,270 @@
-@import url('https://fonts.googleapis.com/css2?family=Dosis&family=Kaisei+Decol&family=Yomogi&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dosis&family=Kaisei+Decol&family=Yomogi&display=swap");
 
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
-    font-family: 'Yomogi', cursive;
+  font-family: "Yomogi", cursive;
 }
 
 #panel {
-    display: grid;
-    grid-template-rows: 100dvh;
-    grid-template-columns: calc(100dvh * ((2.236068 - 1) / 2)) 1fr;
+  display: grid;
+  grid-template-rows: 100dvh;
+  grid-template-columns: calc(100dvh * ((2.236068 - 1) / 2)) 1fr;
 }
 
 #map {
-    height: 100dvh;
-    width: calc(100dvh * ((2.236068 - 1) / 2));
-    margin: 0;
+  height: 100dvh;
+  width: calc(100dvh * ((2.236068 - 1) / 2));
+  margin: 0;
 
-    background-image: url(../img/dot_mesh.svg); /* design */
-    background-repeat: repeat;
-    background-size: 8px; /* design */
+  background-image: url(../img/dot_mesh.svg); /* design */
+  background-repeat: repeat;
+  background-size: 8px; /* design */
 
-    animation: linear 1s moveDotMesh infinite;
+  animation: linear 1s moveDotMesh infinite;
 }
 @keyframes moveDotMesh {
-    from {
-        background-position: 0 0; 
-    }
-    
-    to {
-        background-position: 8px 8px; /* design */
-    }
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 8px 8px; /* design */
+  }
 }
 
 main {
-    min-width: 36rem;
+  min-width: 36rem;
 
-    overflow-y: scroll;
-    overflow-x: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 main::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 main::-webkit-scrollbar-track {
-    background-color: snow;
+  background-color: snow;
 }
 
 main::-webkit-scrollbar-thumb {
-    background-color: darkturquoise;
-    border-radius: 8px;
+  background-color: darkturquoise;
+  border-radius: 8px;
 }
 
 main > div {
-    width: calc(100% - (8px * 2));
+  width: calc(100% - (8px * 2));
 
-    margin: 8px;
+  margin: 8px;
 
-    border-radius: 16px;
+  border-radius: 16px;
 
-    overflow: hidden;
+  overflow: hidden;
 }
 
 #app-about {
-    background-color: lightblue;
+  background-color: lightblue;
 
-    overflow: hidden;
+  overflow: hidden;
 }
 
 #app-title {
-    margin: 8px;
+  margin: 8px;
 
-    display: flex;
-    align-items: flex-end;
-
-
+  display: flex;
+  align-items: flex-end;
 }
 
 #app-name {
-    margin: 0;
+  margin: 0;
 
-    font-size: 2rem;
-    font-family: 'Dosis', sans-serif;
+  font-size: 2rem;
+  font-family: "Dosis", sans-serif;
 }
 
 #app-sub-name {
-    margin: 0 0 0.2rem 0.8rem;
+  margin: 0 0 0.2rem 0.8rem;
 
-    font-size: 1.4rem;
-    font-family: 'Kaisei Decol', serif;
+  font-size: 1.4rem;
+  font-family: "Kaisei Decol", serif;
 }
 
 #app-about > p {
-    margin: 0.4rem 8px;
+  margin: 0.4rem 8px;
 }
 
 .q-box {
-    background-color: pink; /* design */
+  background-color: pink; /* design */
 }
 
-.q-vox-outer{
-    height: 128px;
+.q-vox-outer {
+  height: 128px;
 
-    position: relative;
+  position: relative;
 
-    background-color: lightblue; /* design */
-    background-image: url(../img/triangle_mesh.svg); /* design */
-    background-repeat: repeat;
-    background-size: 18px; /* design */
+  background-color: lightblue; /* design */
+  background-image: url(../img/triangle_mesh.svg); /* design */
+  background-repeat: repeat;
+  background-size: 18px; /* design */
 
-    animation: linear 1s moveTriangleMesh infinite; /* design */
+  animation: linear 1s moveTriangleMesh infinite; /* design */
 }
 @keyframes moveTriangleMesh {
-    from {
-        background-position: 0 0; 
-    }
-    
-    to {
-        background-position: 18px calc(18px * (34/20));
-    }
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 18px calc(18px * (34 / 20));
+  }
 }
 
 .q-vox {
-    height: 50%;
-    width: 100%;
+  height: 50%;
+  width: 100%;
 }
 
 .q-vox-curtain {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 
-    position: absolute;
-    top: 0;
-    left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    z-index: 99;
+  z-index: 99;
 
-    background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .q-vox-play {
-    height: 35%;
-    margin-left: 2%;
+  height: 35%;
+  margin-left: 2%;
 
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    padding: 0;
-    appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
 }
 
 .q-vox-play-outline-1 {
-    height: 70%;
+  height: 70%;
 
-    position: absolute;
+  position: absolute;
 
-    animation: play_outline_1_spin 10s linear infinite;
+  animation: play_outline_1_spin 10s linear infinite;
 }
 
 @keyframes play_outline_1_spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .q-vox-play-outline-2 {
-    height: 90%;
+  height: 90%;
 
-    position: absolute;
+  position: absolute;
 
-    transform: scale(-1,-1);
+  transform: scale(-1, -1);
 
-    animation: play_outline_2_spin 6s linear infinite;
+  animation: play_outline_2_spin 6s linear infinite;
 }
 
 @keyframes play_outline_2_spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(-360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
 }
 
 .q-info {
-    height: calc(128px * (1 / 1.41421356));
+  height: calc(128px * (1 / 1.41421356));
 
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .q-title {
-    height: 100%;
+  height: 100%;
 
-    margin: 8px;
+  margin: 8px;
 
-    float: left;
+  float: left;
 
-    font-family: 'Kaisei Decol', serif;
+  font-family: "Kaisei Decol", serif;
 }
 
 .q-name {
-    margin: 0;
+  margin: 0;
 
-    font-size: 32px;
+  font-size: 32px;
 }
 
 .q-disaster-name {
-    margin: 0;
+  margin: 0;
 }
 
 .split-line {
-    height: calc(100% - 8px);
-    width: 4px;
+  height: calc(100% - 8px);
+  width: 4px;
 
-    margin: 4px 16px;
+  margin: 4px 16px;
 
-    border-radius: 2px;
+  border-radius: 2px;
 
-    float: left;
+  float: left;
 
-    background-color: aquamarine; /* design */
+  background-color: aquamarine; /* design */
 }
 
 .q-details {
-    height: calc(100% - (8px * 2));
+  height: calc(100% - (8px * 2));
 
-    margin: 8px;
+  margin: 8px;
 
-    float: left;
+  float: left;
 
-    display: flex;
-    flex-flow: column;
-    justify-content:flex-end;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
 
-    font-family: 'Yomogi', cursive;
+  font-family: "Yomogi", cursive;
 }
 
 .q-date {
-    margin: 0;
+  margin: 0;
 }
 
 .q-intensity {
-    margin: 0;
+  margin: 0;
 }
 
 #jma-credit {
-    background-color: lightskyblue;
+  background-color: lightskyblue;
 }
 
 #jma-credit > p {
-    width: calc(100% - (8px * 2));
+  width: calc(100% - (8px * 2));
 
-    margin: 8px;
+  margin: 8px;
 
-    overflow-wrap: anywhere;
+  overflow-wrap: anywhere;
 }
 
 #test {
-    background-color: aquamarine;
+  background-color: aquamarine;
 }
+
