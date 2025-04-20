@@ -164,11 +164,8 @@ qs.forEach((q, i) => {
   });
 
   waveList[i] = WaveSurfer.create({
-    ...wavesurfer_setting,
-    ...{
-      container: `#${q.id}`,
-      url: `./src/vox/${q.id}.wav`,
-    },
+    container: `#${q.id}`,
+    url: `./src/vox/${q.id}.wav`,
   });
 
   const qVoxCurtain = document.querySelector(`#${q.id}-curtain`);
